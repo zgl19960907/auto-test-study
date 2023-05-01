@@ -7,5 +7,6 @@ def deal_tq(url, data, method):
     if 'post' == method:
         res = requests.post(url, data)
     elif 'get' == method:
-        res = requests.get(url, data)
+        str_data = eval(data)
+        res = requests.get(url, str_data)
     return res
