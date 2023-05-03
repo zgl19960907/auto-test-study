@@ -31,3 +31,7 @@ class TestCase:
         sheet = webhook['Sheet1']
         sheet.cell(id+1, 6).value = remsg
         webhook.save('case.xlsx')
+
+
+if __name__ == '__main__':
+    pytest.main(['-sv'])
