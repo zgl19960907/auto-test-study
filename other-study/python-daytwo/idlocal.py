@@ -34,7 +34,7 @@ time.sleep(1)
 """
 try:
     time.sleep(1)
-    # 怎么判断成功了？可以根据页签名字的变化来判断
+    # 怎么判断成功？可以根据页签名字的变化来判断
     assert driver.title == "12306_百度搜索"
     print('成功')
 except Exception as e:
