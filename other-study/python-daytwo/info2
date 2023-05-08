@@ -1,3 +1,12 @@
 webUI自动化简章
-    元素定位方式（8种）
-    
+    selenium元素定位方式（8种）
+        id
+        name
+        class
+        tag
+        link
+        partial_link
+        xpath
+        css
+
+    selenium等待机制
