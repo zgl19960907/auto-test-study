@@ -8,5 +8,11 @@ webUI自动化简章
         partial_link
         xpath
         css
-
     selenium等待机制
+        强制等待 time.sleep()
+        隐式等待 设置一个最大等待时间 implicitly_wait(秒数)
+    异常机制
+        try...except
+        try...except...finally...
+        assert断言机制
+        with...as...
