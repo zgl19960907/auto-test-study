@@ -11,6 +11,7 @@ webUI自动化简章
     selenium等待机制
         强制等待 time.sleep()
         隐式等待 设置一个最大等待时间 implicitly_wait(秒数)
+        显式等待 WebDriverWait 等待类里面的until和until_not方法，可以让等待机制更灵活
     异常机制
         try...except
         try...except...finally...
