@@ -14,23 +14,50 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-url = 'https://www.baidu.com/'
+# url = 'https://www.12306.cn/index/'
+# driver = webdriver.Chrome()
+# # driver.maximize_window()  # 最大化窗口
+# driver.get(url)
+# driver.implicitly_wait(20)
+#
+# try:
+#     inabc_click = driver.find_element(By.XPATH, '//*[@id="toolbar_Div"]/div[4]/ul/li[4]/a/i')
+#     time.sleep(2)
+#     inabc_click.click()
+#     assert driver.title == '中国铁路12306网站'
+#     print('找到了')
+#     driver.back()
+#     time.sleep(5)
+# except Exception as e:
+#     print("出错了，错误是：{}".format(e))
+# finally:
+#     driver.quit()
+
+url = 'https://www.12306.cn/index/'
 driver = webdriver.Chrome()
 # driver.maximize_window()  # 最大化窗口
 driver.get(url)
-driver.implicitly_wait(20)
-search_input = driver.find_element(By.ID, 'kw')
-search_input.send_keys("12306")
-btn_click = driver.find_element(By.ID, 'su')
-btn_click.click()
-
+driver.implicitly_wait(30)
+# 获取一个列表
+menu_list = driver.find_elements(By.XPATH, '//*[@id="toolbar_Div"]/div[4]/div[3]/div[2]/ul/li')
+print("快捷小功能数量：{}".format(len(menu_list)))
 try:
-    link_local = driver.find_element(By.XPATH, '//*[@id="1"]/div/div[1]/h3/a[1]')
-    link_local.click()
-    assert link_local != '中国铁路12306网站'
-    print('找到了')
-    time.sleep(5)
-    driver.back()
+    # 循环遍历点击返回
+    for onemenu in range(len(menu_list)-1):
+        '''
+         为什么要加下面这行？为了防止ABA问题,因为经过第一次点击->back()之后，
+         会认为原来的元素已经过期(不在安全)，然后清空原来的元素，会出现下面的报错。
+         Message: stale element reference: element is not attached to the page document
+         但是这样有点问题，如果需要遍历的元素比较多，很大可能会出现list index out of range
+        '''
+        menu_list = driver.find_elements(By.XPATH, '//*[@id="toolbar_Div"]/div[4]/div[3]/div[2]/ul/li')
+        time.sleep(2)
+        menu_list[onemenu].click()
+        # time.sleep(2)
+        assert driver.title == '中国铁路12306网站'
+        print('测试通过')
+        time.sleep(1)
+        driver.back()
 except Exception as e:
     print("出错了，错误是：{}".format(e))
 finally:
