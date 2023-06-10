@@ -1,4 +1,5 @@
 #这个运行没有结果。。。因为写的不太对
+#运行命令：httprunner run other-study/dayfour/test_demo.yaml --html=reports/report.html
 #基础配置
 config:
   name: 指定测试用例名称
