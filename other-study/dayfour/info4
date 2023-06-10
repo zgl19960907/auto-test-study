@@ -39,3 +39,44 @@ requests常用方法：get查、post增、put改、delete删
 
 requests编码
 对安全性要求高的接口，比如资金余额、转账等，可以使用加密接口---可以用时间戳来作为加密方式
+
+yaml相关
+
+yaml基本语法
+    1、大小写敏感
+    2、使用缩进表示层级关系
+    3、缩进不允许使用tab，只能用空格
+    4、缩进的空格数并不重要，只要相同层级的元素左对齐即可
+    5、# 表示注释
+
+yaml数组：以 - 开头的行表示构成一个数组，如果数据的子成员是一个数组，则可以在下面缩进一个空格
+例如，
+people:
+  -
+    name:a
+    age:12
+    hobby:play
+  -
+    name:b
+    age:11
+    hobby:study
+等价于：people:[{name:a,age:12,hobby:play}, {name:b,age:11,hobby:study}]
+
+使用这种命令运行yml文件的测试用例
+httprunner run other-study/dayfour/test_demo.yaml --html=reports/report.html
+不过很少用yaml作为测试用例的设计，因为不易修改，而且难写，稍微写错一点缩进就很难排查，维护成本高，建议使用Excel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

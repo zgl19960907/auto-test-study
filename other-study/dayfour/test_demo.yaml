@@ -1,0 +1,23 @@
+#这个运行没有结果。。。因为写的不太对
+#基础配置
+config:
+  name: 指定测试用例名称
+  base_url: https://www.baidu.com/
+
+#测试步骤
+teststeps:
+-
+  name: search #步骤名称
+  variables: #步骤变量
+    msg: "12306"
+  request:  #请求内容
+    url: s?ie #接口名，一定是存在的
+    method: POST  #请求方式
+    params: #请求参数
+      msg: $msg  #引用上面设置的变量
+  extract: #抽取变量，设置位变量
+    - token: content.token
+  validate:  #断言
+    - eq: [status_code, 200] # 状态码
+
+
